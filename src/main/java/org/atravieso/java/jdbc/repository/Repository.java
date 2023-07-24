@@ -1,16 +1,17 @@
 package org.atravieso.java.jdbc.repository;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface Repository<T> {
 
-    List<T> listar();
+    List<T> listar() throws SQLException;
 
-    T porId(Long id);
+    T porId(Long id) throws SQLException;
 
     // Este lo usaremos para guardar y actualizar
-    void guardar(T t);
+    void guardar(T t) throws SQLException;
 
-    void eliminar(Long id);
+    void eliminar(Long id) throws SQLException;
 
 }

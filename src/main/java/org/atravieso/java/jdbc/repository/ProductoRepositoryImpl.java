@@ -15,7 +15,7 @@ public class ProductoRepositoryImpl implements Repository<Producto> {
     }
 
     @Override
-    public List<Producto> listar() {
+    public List<Producto> listar() throws SQLException {
         List<Producto> productos = new ArrayList<>();
 
         try (
@@ -27,15 +27,13 @@ public class ProductoRepositoryImpl implements Repository<Producto> {
                 productos.add(producto);
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
 
         return productos;
     }
 
     @Override
-    public Producto porId(Long id) {
+    public Producto porId(Long id) throws SQLException {
 
         Producto producto = null;
 
@@ -50,15 +48,13 @@ public class ProductoRepositoryImpl implements Repository<Producto> {
                 }
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
 
         return producto;
     }
 
     @Override
-    public void guardar(Producto producto) {
+    public void guardar(Producto producto) throws SQLException {
 
         String sql;
 
@@ -88,19 +84,15 @@ public class ProductoRepositoryImpl implements Repository<Producto> {
             // Ejecutar sentencia
             stmt.executeUpdate();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
 
     }
 
     @Override
-    public void eliminar(Long id) {
+    public void eliminar(Long id) throws SQLException {
         try(PreparedStatement stmt = getConnection().prepareStatement("DELETE FROM productos WHERE id = ?")) {
             stmt.setLong(1, id);
             stmt.executeUpdate();
-        } catch(SQLException e) {
-            e.printStackTrace();
         }
     }
 

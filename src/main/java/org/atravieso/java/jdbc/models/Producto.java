@@ -13,11 +13,12 @@ public class Producto {
 
     private String sku;
 
-    public Producto(Long id, String nombre, Integer precio, Date fechaRegistro) {
+    public Producto(Long id, String nombre, Integer precio, Date fechaRegistro, String sku) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.fechaRegistro = fechaRegistro;
+        this.sku = sku;
     }
 
     public Producto() {
